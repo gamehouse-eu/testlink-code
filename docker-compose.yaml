@@ -1,0 +1,39 @@
+version: '2'
+services:
+  mysql:
+    image: 'mysql:latest'
+
+    environment:
+      # MYSQL_DATABASE: testlink
+      MYSQL_USER: testlink
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+    # volumes:
+    #   - ./dump:/docker-entrypoint-initdb.d
+    #   - persistent:/var/lib/mysql
+    networks:
+      - gh_network
+    ports:
+      - "3306:3306"
+
+  apache:
+    build: .
+
+    depends_on:
+      mysql:
+        condition: service_started
+
+    ports:
+      - "80:80"
+
+    # environment:
+    #   NODE_ENV: 'dev'
+
+    # volumes:
+    #   - ./test-result:/tmp/test-result
+
+    networks:
+      - gh_network
+
+networks:
+  gh_network:
