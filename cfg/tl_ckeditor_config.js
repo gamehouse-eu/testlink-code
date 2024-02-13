@@ -1,4 +1,4 @@
-/*  
+/*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource: tl_ckeditor_config.js
 Configure CKEditor
@@ -14,15 +14,15 @@ CKEDITOR.editorConfig = function( config )
 	// available skins for version 4.x: moono-lisa => default
 	// For skins present on version 3.x => http://ckeditor.com/addons/skins/all
 	config.skin = 'moonocolor';
-	
+
 	// set css of ckeditor content to testlink.css
 	config.contentsCss = fRoot + '/gui/themes/default/css/testlink.css';
-	
+
 	// do not check "Replace actual contents" checkbox as default
 	config.templates_replaceContent = false;
-	
+
 	// default Toolbar
-	config.toolbar_Testlink = 
+	config.toolbar_Testlink =
 	[
 		['Source','Templates','SpellChecker','Find','Undo','Redo','-',
 		 'NumberedList','BulletedList','-',
@@ -34,16 +34,16 @@ CKEDITOR.editorConfig = function( config )
 		  'Subscript','Superscript','-','TextColor','BGColor','RemoveFormat','-',
 		  'Link','Image','Anchor','SpecialChar']
 	];
-	
+
 	// mini Toolbar
-	config.toolbar_TestlinkMini = 
+	config.toolbar_TestlinkMini =
 	[
 		['NumberedList','BulletedList','-',
 		 'JustifyLeft','JustifyCenter','JustifyRight','-',
 		 'Bold','Italic','TextColor','-',
 		 'Link','Image','Table']
 	];
-	
+
 	// Toolbar with all available features - can be used as template for custom toolbars
 	// '-' creates toolbar seperator
 	// '/' creates a new toolbar "line"
@@ -66,7 +66,7 @@ CKEDITOR.editorConfig = function( config )
 	    ['TextColor','BGColor'],
 	    ['Maximize','ShowBlocks','-','About']
 	];
-	
+
 	/* Configuration of File Browser
 	   You can use theses definitions if you buy ckfinder
 	   more informations on http://ckfinder.com/
@@ -79,4 +79,11 @@ CKEDITOR.editorConfig = function( config )
 	//config.filebrowserUploadUrl = '/third_party/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
 	//config.filebrowserImageUploadUrl = '/third_party/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
 	//config.filebrowserFlashUploadUrl = '/third_party/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+
+	config.filebrowserBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=file';
+  config.filebrowserImageBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=image';
+  config.filebrowserFlashBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=flash';
+  config.filebrowserUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=file';
+  config.filebrowserImageUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=image';
+  config.filebrowserFlashUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=flash';
 }
