@@ -19,16 +19,13 @@ EXPOSE 80
 
 # Copy site into place.
 # ADD www/ /var/www/html
-WORKDIR /var/www/public
+WORKDIR /var/www/html/testlink
 COPY . ./
 
-RUN mkdir -p /var/testlink/logs/
-RUN chmod -R 777 /var/testlink/logs/
-
-RUN mkdir -p /var/testlink/upload_area/
-RUN chmod -R 777 /var/testlink/upload_area/
-
-RUN chmod -R 777 /var/www/public/gui/templates_c
+RUN chmod -R 777 /var/www/html/testlink/logs/
+RUN chmod -R 777 /var/www/html/testlink/upload_area/
+RUN chmod -R 777 /var/www/html/testlink/userfiles
+RUN chmod -R 777 /var/www/html/testlink/gui/templates_c
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf

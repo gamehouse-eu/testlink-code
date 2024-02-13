@@ -1,7 +1,10 @@
 .idea/*
 !.idea/tlcode.iml
-logs/
+logs/**
 config_db.inc.php
-/custom_config.inc.php
+custom_config.inc.php
 **/._*
 upload_area/**
+userfiles/**
+GameHouse*
+# third_party/ckeditor/kcfinder/**
