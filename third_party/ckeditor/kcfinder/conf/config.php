@@ -25,7 +25,7 @@ $_CONFIG = array(
     //'disabled' => true,
     'disabled' => $disabled,
     'uploadURL' => "/testlink/userfiles",
-    'uploadDir' => "/var/www/html/testlink/userfiles",
+    'uploadDir' => "",
     'theme' => "default",
 
     'types' => array(

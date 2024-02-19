@@ -61,7 +61,7 @@ switch ($args->do_action) {
     }
   break;
 
-  case 'do_update':    
+  case 'do_update':
     // ----------------------------------------------------
     // Values got from $args - HITEK
     $of->Value = $args->notes;
@@ -285,11 +285,8 @@ switch ($args->do_action) {
 
 if ($do_display) {
   $user_feedback = $gui->user_feedback;
-  echo $args->opeOK ? 'YES': 'NO';
-  echo '<br> test plan name >>' . $args->testplan_name . '<br>';
   $gui = initializeGui($db,$args,$editorCfg,$tproject_mgr);
   $gui->user_feedback = $user_feedback;
-  echo '<br>GUI test plan name>>' . $gui->testplan_name .'<br>';
 
   $gui->uploadOp = $uploadOp;
   if ($gui->doViewReload = ($template == 'planView.tpl')) {
@@ -297,7 +294,6 @@ if ($do_display) {
     $gui->getTestPlans = true;
     planViewGUIInit($db,$args,$gui,$tplan_mgr);
   }
-  echo $gui->testplan_name .'<br>';
 
   switch ($args->do_action) {
    case "edit":
@@ -310,7 +306,6 @@ if ($do_display) {
   if ($createNotesHTML) {
     // Just to remember
     // the content displayed by $of->CreateHTML() -> $of->Value
-    echo '<b>' . __LINE__ . '</b>';
     $gui->notes = $of->CreateHTML();
   }
 

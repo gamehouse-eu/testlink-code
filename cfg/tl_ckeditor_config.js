@@ -83,7 +83,7 @@ CKEDITOR.editorConfig = function( config )
 	config.filebrowserBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=file';
   config.filebrowserImageBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=image';
   config.filebrowserFlashBrowseUrl = '/testlink/third_party/ckeditor/kcfinder/browse.php?type=flash';
-  config.filebrowserUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=file';
-  config.filebrowserImageUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=image';
-  config.filebrowserFlashUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=flash';
+  //config.filebrowserUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=file';
+  //config.filebrowserImageUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=image';
+  //config.filebrowserFlashUploadUrl = '/testlink/third_party/ckeditor/kcfinder/upload.php?type=flash';
 }
