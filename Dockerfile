@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
 
 # Install Apache, PHP
-RUN apt-get install -y vim apache2 php php-gd php-curl libapache2-mod-php php-mysql php8.1-mbstring
+RUN apt-get install -y vim apache2 php php-gd php-curl libapache2-mod-php php-mysql php8.1-mbstring php8.1-xml
 
 RUN sed -i 's/max_execution_time = .*/max_execution_time = 120/' /etc/php/8.1/apache2/php.ini
 RUN sed -i 's/session.gc_maxlifetime = .*/session.gc_maxlifetime = 2400/' /etc/php/8.1/apache2/php.ini

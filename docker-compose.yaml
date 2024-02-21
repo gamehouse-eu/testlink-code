@@ -6,13 +6,13 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    # volumes:
-    #   - ./dump:/docker-entrypoint-initdb.d
-    #   - mysql-data:/var/lib/mysql
-    networks:
-      - gh_network
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - gh_network
+
   apache:
     build: .
     environment:
@@ -32,14 +32,23 @@ services:
       COMPANY_LOGO: ${COMPANY_LOGO}
       LOGO_LOGIN: ${LOGO_LOGIN}
       LOGO_NAVBAR: ${LOGO_NAVBAR}
+    ports:
+      - "80:80"
+    volumes:
+      - logs:/var/www/html/testlink/logs
+      - upload_area:/var/www/html/testlink/upload_area
+      - userfiles:/var/www/html/testlink/userfiles
     depends_on:
       mysql:
         condition: service_started
-    ports:
-      - "80:80"
-    # volumes:
-    #   - ./test-result:/tmp/test-result
     networks:
       - gh_network
+
 networks:
   gh_network:
+
+volumes:
+  db_data:
+  logs:
+  upload_area:
+  userfiles:
