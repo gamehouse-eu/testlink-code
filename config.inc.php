@@ -133,12 +133,6 @@ define('TL_CSS_MAIN', 'testlink.css');
 define('TL_CSS_PRINT', 'tl_print.css');
 define('TL_CSS_DOCUMENTS', 'tl_documents.css');
 
-define('TL_THEME_BASE_DIR', $tlCfg->theme_dir);
-define('TL_THEME_IMG_DIR', $tlCfg->theme_dir . 'images/');
-define('TL_THEME_CSS_DIR', $tlCfg->theme_dir . 'css/');
-define('TL_TESTLINK_CSS', TL_THEME_CSS_DIR . TL_CSS_MAIN);
-define('TL_PRINT_CSS', TL_THEME_CSS_DIR . TL_CSS_PRINT);
-
 // name of your custom.css, place it in same folder that standard TL css
 // null or '' => do not use
 $tlCfg->custom_css = null;
@@ -1579,10 +1573,6 @@ $tlCfg->attachments->action_on_display_empty_title = 'show_icon';
 // Set display order of uploaded files 
 $tlCfg->attachments->order_by = " ORDER BY date_added DESC ";
 
-
-// need to be moved AFTER include of custom_config
-//
-// $tlCfg->attachments->access_icon = '<img src="' . $tlCfg->theme_dir . 'images/new_f2_16.png" style="border:none" />';
 $tlCfg->attachments->access_string = "[*]";
 
 /**
@@ -2174,10 +2164,17 @@ if ( file_exists( TL_ABS_PATH . 'custom_config.inc.php' ) )
   require_once( TL_ABS_PATH . 'custom_config.inc.php' );
 }
 
+define('TL_THEME_BASE_DIR', $tlCfg->theme_dir);
+define('TL_THEME_IMG_DIR', $tlCfg->theme_dir . 'images/');
+define('TL_THEME_CSS_DIR', $tlCfg->theme_dir . 'css/');
+define('TL_TESTLINK_CSS', TL_THEME_CSS_DIR . TL_CSS_MAIN);
+define('TL_PRINT_CSS', TL_THEME_CSS_DIR . TL_CSS_PRINT);
+
+// $tlCfg->attachments->access_icon = '<img src="' . $tlCfg->theme_dir . 'images/new_f2_16.png" style="border:none" />';
 
 if( !isset($tlCfg->attachments->access_icon) ) {
-  $tlCfg->attachments->access_icon = 
-    '<img src="' . $tlCfg->theme_dir . 
+  $tlCfg->attachments->access_icon =
+    '<img src="' . $tlCfg->theme_dir .
     'images/new_f2_16.png" style="border:none" />';
 }
 
