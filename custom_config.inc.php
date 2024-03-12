@@ -26,6 +26,9 @@
 
 // Be sure you have all the environment variables defined in your docker-compose.yml
 
+/** GUI themes (base for CSS and images)- modify if you create own one */
+$tlCfg->theme_dir = 'gui/themes/' . getenv('THEME_DIR') . '/';
+
 // SMTP server Configuration ("localhost" is enough in the most cases)
 $g_smtp_host = getenv('SMTP_HOST'); # SMTP server MUST BE configured
 $g_tl_admin_email = getenv('ADMIN_EMAIL'); # for problem/error notification
@@ -62,7 +65,7 @@ $tlCfg->gui->show_icon_edit = true;
 $tlCfg->attachments->action_on_save_empty_title = 'use_filename';
 
 $tlCfg->document_generator->company_name = getenv('COMPANY_NAME');
-/** Image is expected in directory <testlink_root>/gui/themes/<your_theme>/images/ */
+/** Images are expected in any directory. Be sure to include the complete path from the document root */
 $tlCfg->document_generator->company_copyright = getenv('COMPANY_COPYRIGHT');
 $tlCfg->document_generator->confidential_msg = getenv('CONFIDENTIAL_MSG');
 $tlCfg->document_generator->company_logo = getenv('COMPANY_LOGO');

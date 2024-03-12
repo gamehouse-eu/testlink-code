@@ -39,7 +39,7 @@
         action="login.php?viewer={$gui->viewer}" method="post">
 
         <h2 class="form-login-heading">
-        <img src="{$tlCfg->theme_dir}images/{$tlCfg->logo_login}"><br>
+        <img src="{$tlCfg->logo_login}"><br>
         {$tlVersion|escape}</h2>
 
         {if $gui->note != ''}

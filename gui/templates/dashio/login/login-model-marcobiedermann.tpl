@@ -13,7 +13,7 @@
   <body class="align">
     <div class="site__container">
       <div class="grid__container">
-      <img src="{$tlCfg->theme_dir}images/{$tlCfg->logo_login}"><br>
+      <img src="{$tlCfg->logo_login}"><br>
       <span>{$tlVersion|escape} </span>
       </div>
       

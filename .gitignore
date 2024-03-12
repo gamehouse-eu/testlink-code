@@ -4,5 +4,5 @@ logs/**
 **/._*
 upload_area/**
 userfiles/**
-GameHouse*
 .env
+private

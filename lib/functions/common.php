@@ -1579,15 +1579,13 @@ function initUserEnv(&$dbH, $context, $opt=null) {
     trim($gui->current_tproject_id) == '' ) {
   }
 
-  $gui->logo = $_SESSION['basehref'] . TL_THEME_IMG_DIR .
-               config_get('logo_navbar');
-        
+  $gui->logo = $_SESSION['basehref'] . config_get('logo_navbar');
 
-  $ft = 'form_token';             
+  $ft = 'form_token';
   $gui->$ft = isset($args->$ft) ? $args->$ft : 0;
   if ($gui->$ft == 0 && isset($_REQUEST[$ft])) {
     $gui->$ft = $_REQUEST[$ft];
-  }               
+  }
   $gui->treeFormToken = $gui->form_token;
 
   return array($args,$gui,$tprjMgr);
