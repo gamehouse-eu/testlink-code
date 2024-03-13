@@ -10,11 +10,12 @@
 
 {lang_get var=labels s='expand_tree, collapse_tree'}
 
-<div class="x-panel-body exec_additional_info" style="padding:3px; padding-left: 9px;border:1px solid #99BBE8;">
+<div class="x-panel-body"
+style="margin-bottom: 5px; margin-left: 1px; padding-top: 5px; padding-bottom: 9px; padding-left: 9px; border: 1px solid #99BBE8;">
 
 <input class="{#BUTTON_CLASS#}" type="button"
-       value="{$labels.expand_tree}" 
-       id="expand_tree" 
+       value="{$labels.expand_tree}"
+       id="expand_tree"
        name="expand_tree"
        onclick="tree.expandAll();"
        style="font-size: 90%;" />

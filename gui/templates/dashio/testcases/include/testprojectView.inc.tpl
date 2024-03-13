@@ -1,4 +1,4 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource testprojectView.inc.tpl
 *}
@@ -14,8 +14,8 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
       <b>{$labels.testsuite_operations}</b>
       <form method="post" action="{$basehref}lib/testcases/containerEdit.php">
 
-        {if property_exists($gui,'calledByMethod')} 
-          <input type="hidden" name="calledByMethod" id="calledByMethod" 
+        {if property_exists($gui,'calledByMethod')}
+          <input type="hidden" name="calledByMethod" id="calledByMethod"
                 value="{$gui->calledByMethod}" />
         {/if}
 
@@ -29,9 +29,9 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
           <i class="fas fa-plus-circle" title="{$labels.btn_new_testsuite}"></i>
         </button>
 
-        <button style="border:0;" name="reorder_testproject_testsuites_alpha" id="reorder_testproject_testsuites_alpha" 
+        <button style="border:0;" name="reorder_testproject_testsuites_alpha" id="reorder_testproject_testsuites_alpha"
                 onclick="doAction.value='reorder_testproject_testsuites_alpha'">
-            <i class="fas fa-sort-alpha-down" 
+            <i class="fas fa-sort-alpha-down"
               title="{$labels.btn_reorder_testsuites_alpha}"></i>
           </button>
 
@@ -44,10 +44,10 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
         {/if}
 
 
-        <i class="fas fa-book" style="padding:1px 6px;" onclick="window.open('{$testSpecFullDocAction}')" 
-            title="{$labels.btn_gen_test_spec_new_window}"></i>   
+        <i class="fas fa-book" style="padding:1px 6px;" onclick="window.open('{$testSpecFullDocAction}')"
+            title="{$labels.btn_gen_test_spec_new_window}"></i>
 
-        <i class="far fa-file-word" style="padding:1px 6px;" onclick="window.open('{$testSpecFullWordDocAction}')" 
+        <i class="far fa-file-word" style="padding:1px 6px;" onclick="window.open('{$testSpecFullWordDocAction}')"
             title="{$labels.btn_gen_test_spec_word}"></i>
 
       </form>
@@ -57,24 +57,24 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 <table class="simple" >
     <tr>
-      <th>{$labels.th_product_name}</th>
-    </tr>
-    <tr>
       <td>
-      {if $gui->mgt_modify_product == 'yes'}
-        <a href="lib/project/projectView.php"  target="mainframe"
-                title="{$labels.edit_testproject_basic_data}">{$gui->container_data.name|escape}</a>
-      {else}
-         {$gui->container_data.name|escape}
-      {/if}
+        <fieldset class="x-fieldset x-form-label-left">
+				  <legend class="legend_container">{$labels.th_product_name}</legend>
+				  {if $gui->mgt_modify_product == 'yes'}
+            <a href="lib/project/projectView.php" target="mainframe"
+                    title="{$labels.edit_testproject_basic_data}">{$gui->container_data.name|escape}</a>
+          {else}
+            {$gui->container_data.name|escape}
+          {/if}
+			  </fieldset>
       </td>
     </tr>
     <tr>
-      <th>{$labels.th_notes}</th>
-    </tr>
-    <tr>
-      <td>{if $gui->testProjectEditorType == 'none'}{$gui->container_data.notes|nl2br}{else}{$gui->container_data.notes}{/if}</td>
+      <td>
+        <fieldset class="x-fieldset x-form-label-left">
+				  <legend class="legend_container">{$labels.th_notes}</legend>
+				  {if $gui->testProjectEditorType == 'none'}{$gui->container_data.notes|nl2br}{else}{$gui->container_data.notes}{/if}
+			  </fieldset>
+      </td>
     </tr>
 </table>
-
- 

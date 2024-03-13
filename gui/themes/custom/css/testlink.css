@@ -73,7 +73,7 @@ ul.nav.nav-tabs.padding-18{
 .x-tree-node{
 	font-size:13px!important;
 }
-/** 
+/**
 use together with #header-wrap, to create a section on top of body
 that remain always visible while rest of body content scrolls,
 giving visual experience that body goes under the section on top
@@ -104,9 +104,9 @@ h1, h1.title {
 	border: 		1px solid black;
 	color:			white;
 	margin:			0px 0px 4px 0px;
-	padding: 		3px;
+	padding: 		4px;
 	text-align: 	left;
-	font-size:		85%;
+	font-size:		14px;
 	font-weight:    bold;
 }
 
@@ -126,7 +126,7 @@ form
 {
 	margin: 		0px;
 	padding: 		0px;
-} 
+}
 
 /* 20100225 - eloff - BUGID 3217 - Ext removes bullets from all lists, re-add bullets to our lists */
 .workBack ol {
@@ -190,7 +190,7 @@ div.testproject_title{
 
 /* **** general classes ************************************* */
 
-/** 
+/**
 use together with body.fixedheader, to create a section on top of body
 that remain always visible while rest of body content scrolls,
 giving visual experience that body goes under the section on top.
@@ -234,7 +234,7 @@ div.workBack {
 
 span.form_label {
 	font-weight:    bold;
-	width:			200px; 
+	width:			200px;
 	float:			left;
 }
 
@@ -374,16 +374,16 @@ span.help
 }
 
 #tlhelp {
-	position: 		absolute; 
-	z-index:		100; 
-	padding:		5px; 
-	right:			50px; 
-	top:			50px; 
-	width: 			500px; 
+	position: 		absolute;
+	z-index:		100;
+	padding:		5px;
+	right:			50px;
+	top:			50px;
+	width: 			500px;
 	height:			auto;
 	background: 	#059;
 	color:			white;
-	font-size:		80%; 
+	font-size:		80%;
 	border: 		medium solid #808080;
 }
 
@@ -532,7 +532,7 @@ table.common caption, table.smallGrey caption {
 
 /* ***** Simple Table (often used to show data) ***************** */
 table.simple, table.simple_tableruler {
-	border: 		thin solid black;
+	/*border: 		thin solid black;*/
 	font-size:		90%;
 	margin:			5px;
 	width:			99%;
@@ -555,12 +555,11 @@ table.tableruler tbody tr:hover{
 
 /* Used for filters and options settings */
 table.smallGrey {
-	border: 		1px solid black;
+	/*border: 		1px solid black;*/
 	font-size:		smaller;
 	margin-bottom:	10px;
 	margin-right:	0px;
 }
-
 
 table.no-border {
 	border: 		0px none;
@@ -773,7 +772,7 @@ div.resultBox {
 }
 
 div.resultBox img:hover {
-	cursor:		pointer;	
+	cursor:		pointer;
 }
 
 img.arrow {
@@ -819,13 +818,19 @@ div.forms {
 }
 
 /* Martin: @TODO clean-up required */
-.hint, .time_stamp_creation, .time_stamp_last_change  {
+.hint, .time_stamp_creation, .time_stamp_last_change {
 	font-style: 	italic;
 }
 
 /* Martin: @TODO clean-up required ; use .label */
 .legend_container, .labelHolder, div.show_hide_title {
 	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 1px;
+	border-bottom: 0px;
+	width: auto;
+	padding-left: 1px;
+	padding-right: 1px;
 }
 
 /* added padding to allow good effect with Nifty */
@@ -873,7 +878,7 @@ div.login_form {
 	width: 			30%;
 	margin: 		35%;
 	margin-top: 	60px;
-	background: 	#CDE;  /* CDE */
+	background: 	#CDE; /* CDE */
 	padding: 		30px;
 	border: 		1px;
     border-style:solid;
@@ -881,29 +886,29 @@ div.login_form {
     border-radius: 15px;
 }
 
-div.login_form.large { 
-	border-color:#FFF;	
+div.login_form.large {
+	border-color:#FFF;
 	font-size: large;
 }
 
 
-div.login_form.medium { 
+div.login_form.medium {
     border: 4px;
     border-style:solid;
-	border-color:#FFF;	
+	border-color:#FFF;
 	font-size: medium;
 }
 /*
-div.login_form.medium { 
+div.login_form.medium {
     border-style:solid;
-	border-color:#FFF;	
+	border-color:#FFF;
 	font-size: medium;
 }
 */
 
 
 .big_button{
-	width: 80px; height : 30px; 
+	width: 80px; height : 30px;
 }
 
 
@@ -1000,70 +1005,70 @@ th.testlink, td.testlink, tr.testlink td {
 	cursor:pointer;
 }
 
-/* 
+/*
 @since 1.9.6
-@internal notice: 
+@internal notice:
 !important is CRITIC because without it, the alternate row color of ext-js grid will take precedence
 
 @internal revisions
-20121230 - franciscom - used on ext-js table implementation of users view 
+20121230 - franciscom - used on ext-js table implementation of users view
 
 */
-.roleCode9 
+.roleCode9
 {
   background-color: acqua !important;
   color: black;
 }
 
-.roleCode8 
+.roleCode8
 {
   background-color: white !important;
   color: black;
 }
 
-.roleCode7 
+.roleCode7
 {
   background-color: wheat !important;
   color: black;
 }
 
-.roleCode6 
+.roleCode6
 {
   background-color: #FFA !important;
   color: black;
 }
 
-.roleCode5 
+.roleCode5
 {
   background-color: pink !important;
   color: black;
 }
 
-.roleCode4 
+.roleCode4
 {
   background-color: cyan !important;
   color: black;
 }
 
-.roleCode3 
+.roleCode3
 {
   background-color: grey !important;
   color: black;
 }
 
-.roleCode2 
+.roleCode2
 {
   background-color: yellow !important;
   color: black;
 }
 
-.roleCode1 
+.roleCode1
 {
   background-color: yellow !important;
   color: black;
 }
 
-.roleCode0 
+.roleCode0
 {
   background-color: seashell !important;
   color: black;

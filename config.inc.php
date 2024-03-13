@@ -257,7 +257,7 @@ $tlCfg->charset = 'UTF-8';
  * @var string characters used to surround a description in the user interface
  * (for example role)
  **/
-$tlCfg->gui_separator_open =  '[';
+$tlCfg->gui_separator_open = '[';
 $tlCfg->gui_separator_close = ']';
 $tlCfg->gui_room = '[ %s ]';
 

@@ -64,7 +64,7 @@ This is done to simplify logic.
 
 
 <body onload="configure_cf_attr('combo_cf_node_type_id',js_enable_on_cfg,js_show_on_cfg);">
-  {include file="aside.tpl"}  
+  {include file="aside.tpl"}
 
   <div id="main-content">
     <h1 class="title big-font">{$labels.title_cfields_mgmt}</h1>
@@ -74,7 +74,7 @@ This is done to simplify logic.
         <div class="row mt">
           <div class="col-lg-12">
             <div class="form-panel">
-              <form class="form-horizontal style-form" name="cfields_edit" 
+              <form class="form-horizontal style-form" name="cfields_edit"
                 method="post" action="{$edit_url}" onSubmit="javascript:return validateForm(this);">
                  <input type="hidden" id="hidden_id" name="cfield_id" value="{$gui->cfield.id}" />
                  <input type="hidden" id="tproject_id" name="tproject_id" value="{$gui->tproject_id}" />
@@ -83,27 +83,27 @@ This is done to simplify logic.
                 <div class="form-group">
                   <label for="name" class="{$cellLabel}">{$labels.name}</label>
                   <div class="{$cellContent}">
-                    <input class="{$inputClass}" required type="text" name="cf_name" id="cf_name"  
-                           size="{$name_size}" 
-                           maxlength="{$name_maxlength}" 
+                    <input class="{$inputClass}" required type="text" name="cf_name" id="cf_name"
+                           size="{$name_size}"
+                           maxlength="{$name_maxlength}"
                            value="{$gui->cfield.name|escape}" />
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
                 <div class="form-group">
                   <label for="label" class="{$cellLabel}">{$labels.label}</label>
                   <div class="{$cellContent}">
-                    <input class="{$inputClass}" required type="text" name="cf_label" id="cf_label"  
-                           size="{$label_size}" 
-                           maxlength="{$label_maxlength}" 
+                    <input class="{$inputClass}" required type="text" name="cf_label" id="cf_label"
+                           size="{$label_size}"
+                           maxlength="{$label_maxlength}"
                            value="{$gui->cfield.label|escape}" />
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
                 <div class="form-group">
                   <label for="available_on" class="{$cellLabel}">{$labels.available_on}</label>
                   <div class="{$cellContent}">
-                    {if $gui->cfield_is_used} 
+                    {if $gui->cfield_is_used}
                       {* Type CAN NOT BE CHANGED *}
                       {$idx=$gui->cfield.node_type_id}
                       {$gui->cfieldCfg->cf_allowed_nodes.$idx}
@@ -118,7 +118,7 @@ This is done to simplify logic.
                       {html_options options=$gui->cfieldCfg->cf_allowed_nodes selected=$gui->cfield.node_type_id}
                       </select>
                     {/if}
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
 
@@ -139,19 +139,19 @@ This is done to simplify logic.
                       {html_options options=$gui->cfield_types selected=$gui->cfield.type}
                       </select>
                     {/if}
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
 
                 <div id="possible_values" class="form-group" style="display:{$possible_values_display_style};">
                   <label for="cf_possible_values" class="{$cellLabel}">{$labels.possible_values}</label>
                   <div class="{$cellContent}">
-                    <input class="{$inputClass}" type="text" 
-                           name="cf_possible_values" id="cf_possible_values"  
-                           size="{$possible_values_size}" 
-                           maxlength="{$possible_values_maxlength}" 
+                    <input class="{$inputClass}" type="text"
+                           name="cf_possible_values" id="cf_possible_values"
+                           size="{$possible_values_size}"
+                           maxlength="{$possible_values_maxlength}"
                            value="{$gui->cfield.possible_values}" />
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
                 <div class="form-group" id="container_cf_enable_on">
@@ -161,12 +161,12 @@ This is done to simplify logic.
                             onchange="initShowOnExec('cf_enable_on',js_show_on_cfg);">
                       {foreach item=area_cfg key=area_name from=$gui->cfieldCfg->cf_enable_on}
                         {$access_key="enable_on_$area_name"}
-                        <option value={$area_name} id="option_{$area_name}" 
-                          {if $area_cfg.value == 0} style="display:none;" {/if} 
+                        <option value={$area_name} id="option_{$area_name}"
+                          {if $area_cfg.value == 0} style="display:none;" {/if}
                           {if $gui->cfield.$access_key} selected="selected"	{/if}>{$area_cfg.label}</option>
                       {/foreach}
                     </select>
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
                 <div class="form-group" id="container_cf_show_on_execution" {$gui->cfieldCfg->cf_show_on.execution.style}>
@@ -175,7 +175,7 @@ This is done to simplify logic.
                     <select id="cf_show_on_execution" name="cf_show_on_execution">
                       {html_options options=$gsmarty_option_yes_no selected=$gui->cfield.show_on_execution}
                     </select>
-                  </div> <!-- cellContent -->  
+                  </div> <!-- cellContent -->
                 </div> <!-- class="form-group" -->
 
 
@@ -184,33 +184,33 @@ This is done to simplify logic.
 
                   {if $buttonGroupLayout == "form-group"}
                     <div class="col-sm-offset-2 col-sm-10">
-                  {/if}  
+                  {/if}
                   {if $user_action eq 'edit'  or $user_action eq 'do_update'}
-                      <input class="{#BUTTON_CLASS#}" type="submit" 
+                      <input class="{#BUTTON_CLASS#}" type="submit"
                              name="do_update" value="{$labels.btn_upd}"
                              onclick="do_action.value='do_update'"/>
 
                       {* Allow delete , just give warning *}
-                      <input class="{#BUTTON_CLASS#}" type="button" 
+                      <input class="{#BUTTON_CLASS#}" type="button"
                              name="do_delete" id="do_delete"
                              value="{$labels.btn_delete}"
                              onclick="delete_confirmation({$gui->cfield.id},
                                      '{$gui->cfield.name|escape:'javascript'|escape}',
                                      '{$del_msgbox_title}','{$warning_msg}');">
 
-                  {else}    
-                      <input class="{#BUTTON_CLASS#}" type="submit" 
+                  {else}
+                      <input class="{#BUTTON_CLASS#}" type="submit"
                              name="do_update" value="{$labels.btn_add}"
                              onclick="do_action.value='do_add'"/>
 
 
-                      <input class="{#BUTTON_CLASS#}" type="submit" 
+                      <input class="{#BUTTON_CLASS#}" type="submit"
                              name="do_add_and_assign" id="do_add_and_assign"
                              value="{$labels.btn_add_and_assign_to_current}"
-                             onclick="do_action.value='do_add_and_assign'"/>                  
+                             onclick="do_action.value='do_add_and_assign'"/>
                   {/if}
-                  <input class="{#BUTTON_CLASS#}" type="button" 
-                         name="cancel" id="cancel" 
+                  <input class="{#BUTTON_CLASS#}" type="button"
+                         name="cancel" id="cancel"
                          value="{$labels.btn_cancel}"
                          onclick="javascript: location.href=fRoot+'lib/cfields/cfieldsView.php';" />
 
