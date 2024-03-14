@@ -1,4 +1,4 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcView.tpl
 Purpose: smarty template - view test case in test specification
@@ -6,7 +6,7 @@ Purpose: smarty template - view test case in test specification
 *}
 
 {config_load file="input_dimensions.conf"}
-{lang_get var='labels' 
+{lang_get var='labels'
           s='no_records_found,other_versions,show_hide_reorder,version,title_test_case,match_count,actions,
              file_upload_ko,warning_estimated_execution_duration_format '}
 
@@ -28,13 +28,13 @@ Purpose: smarty template - view test case in test specification
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
 var del_action = fRoot+'{$deleteStepAction}';
 
-function jsCallDeleteFile(btn, text, o_id) { 
+function jsCallDeleteFile(btn, text, o_id) {
   var my_action='';
   if( btn == 'yes' ) {
     my_action='{$gui->delAttachmentURL}'+o_id;
     window.location=my_action;
   }
-}         
+}
 
 var alert_box_title = "{$labels.warning|escape:'javascript'}";
 var warning_estimated_execution_duration_format = "{$labels.warning_estimated_execution_duration_format|escape:'javascript'}";
@@ -45,7 +45,7 @@ var warning_estimated_execution_duration_format = "{$labels.warning_estimated_ex
  */
 function validateFormEstimatedExecDuration(the_form)
 {
-  var status_ok = true;  
+  var status_ok = true;
   var estimated_execution_duration =  document.getElementById('estimated_execution_duration');
   if (estimated_execution_duration) {
     var val2check = estimated_execution_duration.value;
@@ -61,7 +61,7 @@ function validateFormEstimatedExecDuration(the_form)
 {include file="inc_ext_js.tpl" css_only=1}
 
 {* CRITIC:
-   needed by refresh on upload logic used when this template 
+   needed by refresh on upload logic used when this template
    is called to edit a test case while executing it.
 *}
 {if $gui->bodyOnLoad != ''}
@@ -72,7 +72,7 @@ function validateFormEstimatedExecDuration(the_form)
   {/if}
   var addStr = '&onTemplate=tcView&refreshTree=0' + urlP;
   var {$gui->dialogName} = new std_dialog(addStr);
-  </script>  
+  </script>
 {/if}
 
 
@@ -126,8 +126,7 @@ function validateFormEstimatedExecDuration(the_form)
       {$frozen_version="no"}
     {/if}
 
-    
-    {$tlIMGTags.toggle_direct_link} &nbsp;
+    {$tlIMGTags.toggle_direct_link}
 
     {if $gui->display_testcase_path}
       {foreach from=$gui->path_info[$tcID] item=path_part}
@@ -135,21 +134,22 @@ function validateFormEstimatedExecDuration(the_form)
       {/foreach}
     {/if}
 
-    <i class="fa fa-cog" aria-hidden="true"
-      onclick="javascript:toogleShowHide('tcView_viewer_tcase_control_panel_{$tcVersionID}','inline');"
+    <span class="direct_link" style='display:none'>
+      <a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a>
+    </span>
+
+    <i class="fa fa-cog clickable" aria-hidden="true"
+      onclick="javascript:toogleShowHide('tcView_viewer_tcase_control_panel_{$tcVersionID}');"
       title="{$labels.actions}">
     </i>
-    
 
-      <div class="direct_link" style='display:none'><a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a></div>
-
-      {include file="{$tplConfig['tcViewViewer.inc']}"  
+      {include file="{$tplConfig['tcViewViewer.inc']}"
               args_aliens_map = $gui->currentVersionAliens
               args_tcase_operations_enabled="yes"
               args_read_only="no"
               args_can_move_copy="yes"
-              args_can_delete_testcase="yes" 
-              args_show_version="yes" 
+              args_can_delete_testcase="yes"
+              args_show_version="yes"
               args_hide_relations="no"
               args_new_sibling="yes"
               args_bulk_action="yes"
@@ -159,9 +159,9 @@ function validateFormEstimatedExecDuration(the_form)
               args_testcase=$gui->tc_current_version[idx][0]
               args_status_quo=$gui->status_quo[idx]
 
-              args_keywords_map = $gui->currentVersionKeywords 
-              args_platforms_map = $gui->currentVersionPlatforms 
-              args_reqs = $gui->req4current_version 
+              args_keywords_map = $gui->currentVersionKeywords
+              args_platforms_map = $gui->currentVersionPlatforms
+              args_reqs = $gui->req4current_version
               args_relations = $gui->relations[idx]
 
               args_can_do=$gui->can_do
@@ -171,14 +171,13 @@ function validateFormEstimatedExecDuration(the_form)
               args_show_title=$gui->show_title
               args_activate_deactivate_name='activate'
               args_activate_deactivate='bnt_activate'
-              args_cf=$gui->cf_current_version[idx] 
+              args_cf=$gui->cf_current_version[idx]
               args_tcase_cfg=$gui->tcase_cfg
               args_users=$gui->users
               args_tproject_name=$gui->tprojectName
               args_tsuite_name=$gui->parentTestSuiteName
               args_linked_versions=$gui->linked_versions[idx]
               args_has_testplans=$gui->has_testplans}
-      
 
 
       {* If version is FROZEN, you can only download *}
@@ -192,37 +191,36 @@ function validateFormEstimatedExecDuration(the_form)
           $tlCfg->testcase_cfg->downloadOnlyAfterExec == TRUE}
         {$bDownloadOnly=true}
       {/if}
-  
-      
+
       {if !isset($gui->loadOnCancelURL)}
         {$loadOnCancelURL=""}
-      {/if} 
+      {/if}
 
-    {include file="attachments.inc.tpl" 
-            attach_attachmentInfos=$gui->attachments[$tcVersionID]  
+    {include file="attachments.inc.tpl"
+            attach_attachmentInfos=$gui->attachments[$tcVersionID]
             attach_downloadOnly=$bDownloadOnly
             attach_uploadURL={$gui->fileUploadURL[$tcVersionID]}
             attach_loadOnCancelURL=$gui->loadOnCancelURL}
-    
+
     {* Other Versions *}
     {if 'editOnExec' != $gui->show_mode && $gui->testcase_other_versions[idx] neq null}
           {$vid=$gui->tc_current_version[idx][0].id}
           {$div_id="vers_$vid"}
           {$memstatus_id="mem_$div_id"}
           <br />
-          {include file="inc_show_hide_mgmt.tpl" 
+          {include file="inc_show_hide_mgmt.tpl"
                   show_hide_container_title=$labels.other_versions
                   show_hide_container_id=$div_id
                   show_hide_container_draw=false
                   show_hide_container_class='exec_additional_info'
                   show_hide_container_view_status_id=$memstatus_id}
-                
+
           <div id="vers_{$vid}" class="workBack">
 
           {foreach from=$gui->testcase_other_versions[idx] item=my_testcase key=tdx}
-    
+
             {$tcversion_id=$my_testcase.id}
-            
+
             {$thisVersionIsExecuted = false}
             {if $gui->status_quo[idx][$tcversion_id].executed != '' }
               {$thisVersionIsExecuted = true}
@@ -243,58 +241,58 @@ function validateFormEstimatedExecDuration(the_form)
             {if $my_testcase.is_open == 0}
               {$tcv_frozen_version="yes"}
             {/if}
-        
+
             {$sep="_"}
             {$div_id="v_$vid"}
             {$div_id="$div_id$sep$version_num"}
             {$memstatus_id="mem_$div_id"}
-            {include file="inc_show_hide_mgmt.tpl" 
+            {include file="inc_show_hide_mgmt.tpl"
                     show_hide_container_title=$title
                     show_hide_container_id=$div_id
                     show_hide_container_draw=false
                     show_hide_container_class='exec_additional_info'
                     show_hide_container_view_status_id=$memstatus_id}
-                      
+
                 <div id="{$div_id}" class="workBack">
                 {*
                 BE CAREFUL
                 args_cf=$gui->cf_other_versions[idx][tdx]  - KO
                 args_cf=$gui->cf_other_versions[$idx][$tdx]  - KO
                 args_cf=$gui->cf_other_versions[$idx][tdx]  - KO
-                args_cf=$gui->cf_other_versions[idx][$tdx] - OK 
+                args_cf=$gui->cf_other_versions[idx][$tdx] - OK
                 - do not know if there is info on smarty manuals
                 *}
 
-                <img class="clickable" src="{$tlImages.cog}" 
-                  onclick="javascript:toogleShowHide('tcView_viewer_tcase_control_panel_{$tcversion_id}','inline');"
+                <img class="clickable" src="{$tlImages.cog}"
+                  onclick="javascript:toogleShowHide('tcView_viewer_tcase_control_panel_{$tcversion_id}');"
                   title="{$labels.actions}" />
 
                 {* Setting args_can_do makes other versions READONLY *}
                 {* Be carefull IDX is OK ONLY for status_quo *}
-                {include file="{$tplConfig['tcViewViewer.inc']}" 
-                        
+                {include file="{$tplConfig['tcViewViewer.inc']}"
+
                   args_tcase_cfg=$gui->tcase_cfg
                   args_read_only=$tcv_frozen_version
 
-                  args_can_move_copy="no" 
+                  args_can_move_copy="no"
                   args_can_delete_testcase='no'
                   args_can_delete_version="yes"
                   args_hide_relations="no"
-                  args_show_version="no" 
+                  args_show_version="no"
                   args_show_title="no"
                   args_new_sibling="no"
                   args_bulk_action="no"
                   args_tcase_operations_enabled="no"
 
-                  args_testcase = $my_testcase 
+                  args_testcase = $my_testcase
 
                   args_status_quo = $gui->status_quo[idx]
 
-                  args_keywords_map = $gui->otherVersionsKeywords[$tdx] 
-                  
-                  args_platforms_map = $gui->otherVersionsPlatforms[$tdx] 
+                  args_keywords_map = $gui->otherVersionsKeywords[$tdx]
 
-                  args_aliens_map = $gui->otherVersionsAliens[$tdx] 
+                  args_platforms_map = $gui->otherVersionsPlatforms[$tdx]
+
+                  args_aliens_map = $gui->otherVersionsAliens[$tdx]
 
                   args_reqs = $gui->req4OtherVersions[$tdx]
                   args_relations = $gui->otherVersionsRelations[$tdx]
@@ -308,27 +306,27 @@ function validateFormEstimatedExecDuration(the_form)
                   args_has_testplans=$gui->has_testplans}
 
 
-                {$downloadOnly = false} 
-                {if $thisVersionIsExecuted && 
+                {$downloadOnly = false}
+                {if $thisVersionIsExecuted &&
                     $tlCfg->testcase_cfg->downloadOnlyAfterExec == TRUE}
                   {$downloadOnly=true}
                 {/if}
 
                 {if $tcv_frozen_version=="yes"}
-                  {$downloadOnly = true} 
+                  {$downloadOnly = true}
                 {/if}
-                {include file="attachments.inc.tpl" 
-                        attach_attachmentInfos=$gui->attachments[$tcversion_id]  
+                {include file="attachments.inc.tpl"
+                        attach_attachmentInfos=$gui->attachments[$tcversion_id]
                         attach_downloadOnly=$downloadOnly
                         attach_uploadURL=$gui->fileUploadURL[$tcversion_id]
                         attach_loadOnCancelURL=$gui->loadOnCancelURL}
 
               </div>
               <br />
-              
+
           {/foreach}
           </div>
-    
+
           {* ---------------------------------------------------------------- *}
           {* Force the div of every old version to show closed as first state *}
           <script type="text/javascript">

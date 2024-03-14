@@ -8,7 +8,7 @@
 //
 // @used This library is automatically loaded with inc_header.tpl
 //
-//                               
+//
 // ----- Development Notes --------------------------------------------------------------
 //
 // @global variables:
@@ -41,21 +41,21 @@ function focusInputField(id,selectIt) {
     f.focus();
     if(selectIt) {
       f.select();
-    } 
+    }
   }
 }
 
 
-/* 
+/*
 function: show help <div> tag with absolute position or right site ow window
 arg: localized text of help
-returns: N/A 
+returns: N/A
 */
 function show_help(text)
 {
   // set workframe window for navigator pane
   if(window.name == "treeframe"){
-    var mywindows = window.parent.frames["workframe"].document;   
+    var mywindows = window.parent.frames["workframe"].document;
   } else {
     var mywindows = window.document;
   }
@@ -63,7 +63,7 @@ function show_help(text)
   var myElement = mywindows.getElementById("tlhelp");
   if(myElement == null)
   {
-    
+
     var mybody = mywindows.getElementsByTagName("body").item(0);
     var newdiv = mywindows.createElement('div');
     newdiv.setAttribute('id', 'tlhelp');
@@ -76,11 +76,11 @@ function show_help(text)
   myElement.innerHTML = text;
 }
 
-function close_help() 
+function close_help()
 {
   // set workframe window for navigator pane
   if(window.name == "treeframe"){
-    var mywindows = window.parent.frames["workframe"].document;   
+    var mywindows = window.parent.frames["workframe"].document;
   } else {
     var mywindows = window.document;
   }
@@ -101,7 +101,7 @@ function close_help()
 
 */
 function open_popup(page) {
-  var windowCfg="left=350,top=50,screenX=350,screenY=50,fullscreen=no,resizable=yes," + 
+  var windowCfg="left=350,top=50,screenX=350,screenY=50,fullscreen=no,resizable=yes," +
                 "toolbar=no,status=no,menubar=no,scrollbars=yes,directories=no,location=no," +
                 "width=600,height=500";
   window.open(page, "_blank",windowCfg);
@@ -168,7 +168,7 @@ function EXDS(tproject_id,tplan_id) {
                    '?tproject_id='+tproject_id;
   if (typeof tplan_id != 'undefined'){
      action_url +='&tplan_id='+tplan_id;
-  }                  
+  }
   action_url += args;
   parent.workframe.location = action_url;
 }
@@ -195,7 +195,7 @@ function EP(id) {
                    "&caller=EP&tproject_id="+id+ args+"&"+pParams;
 
   // alert(_FUNCTION_NAME_ + " " +action_url);
-                 
+
   parent.workframe.location = action_url;
 }
 
@@ -211,14 +211,14 @@ function EP(id) {
 function ETS(tproj_id,id) {
   // menuUrl => archiveData.php
   // menuUrl => lib/plan/planAddTC.php
-  
+
   // get checkboxes status
   var _FUNCTION_NAME_="ETS";
   var pParams = tree_getPrintPreferences();
   var action_url=fRoot+menuUrl+"?print_scope=test_specification" +
                  "&edit=testsuite&level=testsuite" +
                  "&caller=ETS"+
-                 "&containerType=testsuite&id=" + id + 
+                 "&containerType=testsuite&id=" + id +
                  "&tproject_id=" + tproj_id + args+"&"+pParams;
 
   //alert(_FUNCTION_NAME_ + " " +action_url);
@@ -241,7 +241,7 @@ function ET(tproj_id,id,v)
   if(v == undefined) {
     v = -1;
   }
-  var my_location = fRoot + menuUrl + 
+  var my_location = fRoot + menuUrl +
       "?version_id="+v+"&edit=testcase&id=" + id +
        "&caller=ET"+
       "&tproject_id=" + tproj_id + args;
@@ -335,7 +335,7 @@ function ER(id)
 
 }
 
-/* 
+/*
   function: TPLAN_PTS
             Test PLAN Print Test Suite
 
@@ -374,12 +374,12 @@ function showOrHideElement(oid,hide)
 {
     var obj = document.getElementById(oid);
     var displayValue = "";
-    
+
     if (!obj)
     {
       return;
-    }                  
-    
+    }
+
     if(hide)
     {
       displayValue = "none";
@@ -399,7 +399,7 @@ function modifyRoles_warning()
   if (confirm(warning_modify_role))
   {
     ret=true;
-  } 
+  }
   return ret;
 }
 
@@ -429,7 +429,7 @@ function deleteAttachment_onClick(btn,txt,id)
     var windowCfg="width=510,height=150,resizable=yes,dependent=yes";
     window.open(fRoot+"lib/attachments/attachmentdelete.php?id="+id,
                 "Delete",windowCfg);
-  } 
+  }
 }
 
 function attachmentDlg_onUnload()
@@ -444,7 +444,7 @@ function attachmentDlg_onUnload()
     if (attachmentDlg_refWindow == top.opener)
     {
       top.opener.location = attachmentDlg_refLocation;
-    } 
+    }
   }
   catch(e)
   {}
@@ -463,7 +463,7 @@ function attachmentDlg_onLoad()
     if (attachmentDlg_refWindow.attachment_reloadOnCancelURL)
     {
       attachmentDlg_refLocation = attachmentDlg_refWindow.attachment_reloadOnCancelURL;
-    } 
+    }
   }
   catch(e)
   {}
@@ -529,10 +529,10 @@ function confirm_and_submit(msg,form_id,field_id,field_value,action_field_id,act
 
   returns:
 
-  rev  : 
+  rev  :
 
   ATTENTION:
-  this work in symbiosis with init_checkboxes() - printDocOptions.php 
+  this work in symbiosis with init_checkboxes() - printDocOptions.php
   Symbiosis (from Ancient Greek σύν "together" and βίωσις "living")
 
 */
@@ -540,12 +540,12 @@ function tree_getPrintPreferences() {
 
   var params = [];
   var fields = printPreferences.split(',');
-  
+
   for (var idx= 0;idx < fields.length;idx++) {
     var v = tree_getCheckBox(fields[idx]);
     if (v) {
       params.push(v);
-    } 
+    }
   }
 
   var f = document.getElementById('format');
@@ -563,7 +563,7 @@ function tree_getPrintPreferences() {
     var vv = 0;
     if(bx.checked) {
       vv = 1;
-    }  
+    }
     params.push("with_user_assignment=" + vv);
   }
 
@@ -591,11 +591,11 @@ function tree_getCheckBox(id)
  */
 function open_script_add_window(tproject_id,tplan_id,tcversion_id,user_action)
 {
-  l2l = "lib/testcases/scriptAdd.php?user_action=" + user_action + 
-        "&tcversion_id="+tcversion_id +"&tproject_id=" + tproject_id + 
+  l2l = "lib/testcases/scriptAdd.php?user_action=" + user_action +
+        "&tcversion_id="+tcversion_id +"&tproject_id=" + tproject_id +
         "&tplan_id=" + tplan_id;
 
-  switch(user_action)  
+  switch(user_action)
   {
     case 'create':
       wh = "width=700,height=580";
@@ -604,8 +604,8 @@ function open_script_add_window(tproject_id,tplan_id,tcversion_id,user_action)
     default:
       wh = "width=610,height=650";
     break;
-  }            
- 
+  }
+
   window.open(fRoot+l2l,"script_add",wh+",resizable=yes,dependent=yes");
 }
 
@@ -614,11 +614,11 @@ function open_script_add_window(tproject_id,tplan_id,tcversion_id,user_action)
  */
 function open_bug_add_window(tproject_id,tplan_id,tcversion_id,exec_id,tcstep_id,user_action)
 {
-  l2l = "lib/execute/bugAdd.php?user_action=" + user_action + 
-        "&tcversion_id="+tcversion_id +"&tproject_id=" + tproject_id + 
+  l2l = "lib/execute/bugAdd.php?user_action=" + user_action +
+        "&tcversion_id="+tcversion_id +"&tproject_id=" + tproject_id +
         "&tplan_id=" + tplan_id + "&exec_id="+exec_id + "&tcstep_id="+tcstep_id;
 
-  switch(user_action)  
+  switch(user_action)
   {
     case 'create':
       wh = "width=700,height=400";
@@ -627,8 +627,8 @@ function open_bug_add_window(tproject_id,tplan_id,tcversion_id,exec_id,tcstep_id
     default:
       wh = "width=510,height=400";
     break;
-  }            
-  
+  }
+
   window.open(fRoot+l2l,"bug_add",wh+",resizable=yes,dependent=yes");
 }
 
@@ -639,7 +639,7 @@ function open_bug_note_add_window(bug_id,tproject_id,tcversion_id,exec_id,user_a
 {
   link2launch = "lib/execute/bugAdd.php?user_action=" + user_action + "&tcversion_id="+tcversion_id +
                 "&tproject_id=" + tproject_id + "&exec_id="+exec_id + "&bug_id=" + bug_id;
-                
+
   window.open(fRoot+link2launch,"bug_add_note","width=510,height=270,resizable=yes,dependent=yes");
 }
 
@@ -686,7 +686,7 @@ function dialog_onLoad(odialog)
       odialog.refLocation += odialog.refAdditional;
 
       // alert(odialog.refLocation);
-    } 
+    }
   }
   catch(e)
   {}
@@ -704,7 +704,7 @@ function dialog_onUnload(odialog)
     if (odialog.refWindow == top.opener)
     {
       top.opener.location = odialog.refLocation;
-    } 
+    }
   }
   catch(e)
   {}
@@ -715,7 +715,7 @@ function dialog_onUnload(odialog)
 /**
  * Calls the bug delete page when the 'yes' button in the delete confirmation dialog
  * was clicked
- * 
+ *
  * @param btn string id of the button clicked
  * @param text string not used
  * @param combinedBugID string like <executionID-tcStepID-bugID>
@@ -727,29 +727,29 @@ function deleteBug(btn,text,combinedBugID)
   var tcStepID;
   var bugID;
   var target;
-  
+
   if (btn != 'yes')
   {
     return;
   }
-  
+
   idx = combinedBugID.indexOf('-');
   if (idx < 0)
   {
     return;
   }
-  
+
   executionID = combinedBugID.substr(0,idx);
-  
+
   target = combinedBugID.substr(idx+1);
   idx = target.indexOf('-');
   tcStepID = target.substr(0,idx)
 
   // TICKET 4814: bug deletion may fails if bugID string contains special characters ('#', '&' , ...)
-  // bugID string may contain special characters : 
+  // bugID string may contain special characters :
   // must escape it to get correct bugID value in bugDelete.php
   bugID = escape(target.substr(idx+1));
-  
+
   window.open(fRoot+"lib/execute/bugDelete.php?exec_id="+executionID+"&tcstep_id="+tcStepID+"&bug_id="+bugID,
                 "DeleteBug","width=510,height=150,resizable=yes,dependent=yes");
 }
@@ -757,7 +757,7 @@ function deleteBug(btn,text,combinedBugID)
 /**
  * Calls the script link delete page when the 'yes' button in the delete confirmation dialog
  * was clicked
- * 
+ *
  * @param btn string id of the button clicked
  * @param text string not used
  * @param combinedScriptID string like <tprojectID:tcversionID-scriptID>
@@ -769,23 +769,23 @@ function deleteScript(btn,text,combinedScriptID)
   var tprojectID;
   var tcversionID;
   var scriptID;
-  
+
   if (btn != 'yes')
   {
     return;
   }
- 
+
   idx1 = combinedScriptID.indexOf(':');
   idx2 = combinedScriptID.indexOf('-');
   if (idx1 < 0 || idx2 < 0)
   {
     return;
   }
-  
+
   tprojectID = combinedScriptID.substr(0,idx1)
   tcversionID = combinedScriptID.substr(idx1+1,idx2)
   scriptID = escape(combinedScriptID.substr(idx2+1));
- 
+
   window.open(fRoot+"lib/testcases/scriptDelete.php?tproject_id="+tprojectID+"&tcversion_id="+tcversionID+"&script_id="+scriptID,
                 "DeleteScript","width=510,height=150,resizable=yes,dependent=yes");
 }
@@ -847,7 +847,7 @@ function openAssignmentOverviewWindow(user_id, build_id, tplan_id) {
 /**
  * Open testcase description in a popup window.
  *
- * 
+ *
  */
 function openTCEditWindow(tcase_id,tcversion_id,tproject_id)  {
   var url = "lib/testcases/archiveData.php?edit=testcase&id=" + tcase_id;
@@ -859,15 +859,15 @@ function openTCEditWindow(tcase_id,tcversion_id,tproject_id)  {
   if (tproject_id !== undefined) {
     url += "&tproject_id=" + tproject_id;
   }
-          
+
   var width = getCookie("TCEditPopupWidth");
   var height = getCookie("TCEditPopupHeight");
-  
+
   if (width == null)
   {
     var width = "800";
   }
-  
+
   if (height == null)
   {
     var height = "600";
@@ -887,26 +887,26 @@ function openTCEditWindow(tcase_id,tcversion_id,tproject_id)  {
  * @param tplan_id
  * @param platform_id
  */
-function openExecutionWindow(tc_id, tcversion_id, build_id, tplan_id, platform_id, whoiam) 
+function openExecutionWindow(tc_id, tcversion_id, build_id, tplan_id, platform_id, whoiam)
 {
   var url = "lib/execute/execSetResults.php?" + "version_id=" + tcversion_id +
             "&level=testcase&id=" + tc_id + "&tplan_id=" + tplan_id +
             "&setting_build=" + build_id + "&setting_platform=" + platform_id +
             "&caller=" + whoiam;
-  
+
   var width = getCookie("TCExecPopupWidth");
   var height = getCookie("TCExecPopupHeight");
-  
+
   if (width == null)
   {
     var width = "800";
   }
-  
+
   if (height == null)
   {
     var height = "600";
   }
-  
+
   var windowCfg = "width="+width+",height="+height+",resizable=yes,scrollbars=yes,dependent=yes";
   window.open(fRoot+url, '_blank', windowCfg);
 }
@@ -923,8 +923,8 @@ function openExecutionWindow(tc_id, tcversion_id, build_id, tplan_id, platform_i
 function open_help_window(help_page,locale)
 {
     var windowCfg='';
-    windowCfg="left=350,top=50,screenX=350,screenY=50,fullscreen=no,resizable=yes," + 
-               "toolbar=no,status=no,menubar=no,scrollbars=yes,directories=no," + 
+    windowCfg="left=350,top=50,screenX=350,screenY=50,fullscreen=no,resizable=yes," +
+               "toolbar=no,status=no,menubar=no,scrollbars=yes,directories=no," +
                "location=no,width=400,height=650";
     window.open(fRoot+"lib/general/show_help.php?help="+help_page+"&locale="+locale,"_blank",windowCfg);
 }
@@ -937,10 +937,10 @@ function open_help_window(help_page,locale)
 
   args: tcase_id: test case id
         tcversion_id: test case version id
-        show_mode: string used on testcase.show() to manage refresh 
+        show_mode: string used on testcase.show() to manage refresh
                    logic of frames when Edit Test case page is closed.
                    This argument was added to allow automatic referesh
-                   of frames when user uses the feature that allows 
+                   of frames when user uses the feature that allows
                    edit a test case while execution it.
 
   returns:
@@ -976,10 +976,10 @@ function openTCaseWindow(tcase_id,tcversion_id,show_mode) {
 
 /**
  * open a specific version of a requirement in a popup window
- * 
+ *
  * @param req_id Requirement ID
  * @param req_version_id Requirement Version ID
- * @param tproject_id 
+ * @param tproject_id
  * @param anchor string with anchor name
  */
 function openLinkedReqVersionWindow(req_id, req_version_id, tproject_id, anchor) {
@@ -989,7 +989,7 @@ function openLinkedReqVersionWindow(req_id, req_version_id, tproject_id, anchor)
   } else {
     anchor = '#' + anchor;
   }
-  
+
 
   var windowCfg='';
   var feature_url = "lib/requirements/reqView.php";
@@ -1014,7 +1014,7 @@ function openLinkedReqVersionWindow(req_id, req_version_id, tproject_id, anchor)
 
 /**
  * open a requirement in a popup window
- * 
+ *
  * @param req_id Requirement ID
  * @param anchor string with anchor name
  */
@@ -1030,7 +1030,7 @@ function openLinkedReqWindow(req_id, tproject_id, anchor) {
   } else {
     anchor = '#' + anchor;
   }
-  
+
   if (width == null) {
     width = "800";
   }
@@ -1039,7 +1039,7 @@ function openLinkedReqWindow(req_id, tproject_id, anchor) {
     height = "600";
   }
 
-  feature_url += "?showReqSpecTitle=1&requirement_id=" + req_id; 
+  feature_url += "?showReqSpecTitle=1&requirement_id=" + req_id;
   feature_url += "&tproject_id=" + tproject_id + anchor;
   windowCfg = "width="+width+",height="+height+",resizable=yes,scrollbars=yes,dependent=yes";
   window.open(fRoot+feature_url,"Requirement",windowCfg);
@@ -1047,7 +1047,7 @@ function openLinkedReqWindow(req_id, tproject_id, anchor) {
 
 /**
  * open a requirement in a popup window
- * 
+ *
  * @param req_id Requirement ID
  * @param req_version_id Requirement Version ID
  * @param anchor string with anchor name
@@ -1064,7 +1064,7 @@ function DUPLICATEDopenLinkedReqVersionWindow(req_id,req_version_id, anchor) {
   } else {
     anchor = '#' + anchor;
   }
-  
+
   if (width == null) {
     width = "800";
   }
@@ -1073,7 +1073,7 @@ function DUPLICATEDopenLinkedReqVersionWindow(req_id,req_version_id, anchor) {
     height = "600";
   }
 
-  feature_url += "?&showReqSpecTitle=1&requirement_id=" + req_id + 
+  feature_url += "?&showReqSpecTitle=1&requirement_id=" + req_id +
                  "&req_version_id=" + req_version_id + anchor;
   windowCfg = "width="+width+",height="+height+",resizable=yes,scrollbars=yes,dependent=yes";
   window.open(fRoot+feature_url,"Requirement",windowCfg);
@@ -1081,7 +1081,7 @@ function DUPLICATEDopenLinkedReqVersionWindow(req_id,req_version_id, anchor) {
 
 /**
  * open a req spec in a popup window
- * 
+ *
  * @param reqspec_id Requirement Specification ID
  * @param anchor string with anchor name
  */
@@ -1092,7 +1092,7 @@ function openLinkedReqSpecWindow(reqspec_id, anchor)
   } else {
     anchor = '#' + anchor;
   }
-  
+
   var windowCfg='';
   var feature_url = "lib/requirements/reqSpecView.php";
   feature_url += "?req_spec_id=" + reqspec_id + anchor;
@@ -1118,7 +1118,7 @@ function openLinkedReqSpecWindow(reqspec_id, anchor)
 
 /*
   function: TPROJECT_REQ_SPEC_MGMT
-            launcher for Testproject REQuirement 
+            launcher for Testproject REQuirement
             SPECifications ManaGeMenT
 */
 function TPROJECT_REQ_SPEC_MGMT(id)
@@ -1149,7 +1149,7 @@ function REQ_SPEC_MGMT(tproj_id,id)
   var action_url = fRoot+req_spec_manager_url+
                    "?item=req_spec&tproject_id="+tproj_id+
                    "&req_spec_id="+id+args+"&"+pParams;
-  
+
   //alert(_FUNCTION_NAME_ + " " +action_url);
   parent.workframe.location = action_url;
 }
@@ -1189,14 +1189,14 @@ function show_hide_column(table_id,col_no)
 {
   var tbl  = document.getElementById(table_id);
   var rows = tbl.getElementsByTagName('tr');
-  
+
   for (var row=0; row<rows.length;row++)
   {
     if(row == 0)
       cellTag = 'th';
     else
       cellTag = 'td';
-    
+
       var cels = rows[row].getElementsByTagName(cellTag)
       if(cels[col_no].style.display == 'none')
           cels[col_no].style.display='block';
@@ -1226,6 +1226,19 @@ function showHideByClass(tagName,className)
     }
 }
 
+function showHideByDataEntity(dataEntity) {
+  const objects = document.querySelectorAll(`[data-entity='${dataEntity}']`);
+
+  for (let object of objects) {
+    if(object.style.display == 'none') {
+      object.style.display='';
+    }
+    else {
+      object.style.display='none';
+    }
+  }
+}
+
 /*
 function: showCal
           used to display extjs datepicker
@@ -1247,7 +1260,7 @@ function showCal(id,dateField,dateFormat)
   var dp = new Ext.DatePicker({ renderTo:id, format:dateFormat, idField:dateField });
   // read value of date input field
   var el = document.getElementById(dateField);
-  
+
   // if value on input field exists use it to preselect datepicker
   if(el.value != "")
   {
@@ -1255,29 +1268,29 @@ function showCal(id,dateField,dateFormat)
      * because datepicker needs Date Object to be able to preselect date according to
      * value on input field
      */
-    
+
     // get char that splits date pieces on localized timestamp ( ".", "/" or "-" )
     splitChar = ".";
     if (el.value.indexOf("-") != -1) {
       splitChar = "-";
-    } 
+    }
     if (el.value.indexOf("/") != -1) {
       splitChar = "/";
     }
-    
+
     // split the date from input field with splitChar
     var splitDate = el.value.split(splitChar);
-    
+
     // prepare variables for date "pieces"
     var year = null;
     var month = null;
     var day = null;
-    
+
     // remove all splitChars (max 2)
     // TODO do not call replace twice use reg exp
     dateFormat = dateFormat.replace(splitChar, "");
     dateFormat = dateFormat.replace(splitChar, "");
-    
+
     // get date "pieces" according to dateFormat
     for(i=0; i < dateFormat.length; i++) {
       switch (dateFormat.charAt(i)) {
@@ -1288,19 +1301,19 @@ function showCal(id,dateField,dateFormat)
         //case "y":
         //  year = splitDate[i];
         //  break;
-        case "m": 
+        case "m":
           month = splitDate[i];
           break;
-        case "d": 
+        case "d":
           day = splitDate[i];
           break;
       }
     }
-    
+
     // finally create Date object to preselect date on datepicker
     // subtract 1 from month as january has value 0
     selectedDate = new Date(year,(month-1),day);
-    
+
     if (isNaN(selectedDate.getTime()))
     {
        selectedDate = '';
@@ -1371,18 +1384,18 @@ function showEventHistoryFor(objectID,objectType)
 }
 
 /*
-  function: 
+  function:
 
   args :
-  
-  returns: 
+
+  returns:
 
 */
 function openReqWindow(tcase_id,callback)
-{ 
-  var windowCfg='';                       
+{
+  var windowCfg='';
   var feature_url = "lib/requirements/reqTcAssign.php";
-  
+
   feature_url +="?edit=testcase&showCloseButton=1&callback="+callback+"&id="+tcase_id;
 
   // second parameter(window name) with spaces generate bug on IE
@@ -1394,8 +1407,8 @@ function openReqWindow(tcase_id,callback)
   function: toggleInput
 
   args: oid - object id
-  
-  returns: 
+
+  returns:
 
   rev: 20090716 - franciscom - fixed refactored that does not work
 */
@@ -1405,7 +1418,7 @@ function toggleInput(oid)
   if (elem)
   {
     elem.value = (elem.value == 1) ? 0 : 1;
-  }  
+  }
 }
 
 
@@ -1437,9 +1450,9 @@ function showFeedback(success, msg_text)
     {
         dim.setAttribute('id','user_feedback');
         showFeedback(success, msg_text);
-    } 
+    }
   }
-*/   
+*/
 }
 
 
@@ -1474,13 +1487,13 @@ function openExecEditWindow(exec_id,tcversion_id,tplan_id,tproject_id)
               "execution_notes",windowCfg);
 }
 
-/* 
+/*
  * use to display test suite content (read only mode) on execution feature
  * on user request
  */
 function openTestSuiteWindow(tsuite_id)
-{ 
-  var windowCfg = '';                       
+{
+  var windowCfg = '';
   var feature_url = "lib/testcases/archiveData.php";
 
   feature_url +="?show_mode=readonly&print_scope=test_specification&edit=testsuite&level=testsuite&id="+tsuite_id;
@@ -1490,9 +1503,9 @@ function openTestSuiteWindow(tsuite_id)
   window.open(fRoot+feature_url,"TestSuite",windowCfg);
 }
 
-/* 
+/*
  * use to display documentation included on test link distribution
- * 20100131 - franciscom - moved here to solve BUGID 3118: Help files are not getting 
+ * 20100131 - franciscom - moved here to solve BUGID 3118: Help files are not getting
  *                         opened when selected in the dropdown
  */
 function get_docs(name, server_name)
@@ -1550,7 +1563,7 @@ function storeWindowSize(windowname) {
  *
  * @internal Revisions
  * 20110112 - added check if obj is not null to avoid warnings
- * 20101016 - franciscom - BUGID 3901: Edit Test Case STEP - scroll window to show selected step 
+ * 20101016 - franciscom - BUGID 3901: Edit Test Case STEP - scroll window to show selected step
  */
 function scrollToShowMe(oid) {
   obj = document.getElementById(oid);
@@ -1563,7 +1576,7 @@ function scrollToShowMe(oid) {
 
 /**
  * open a requirement in a popup window
- * 
+ *
  * @param item_id Requirement REVISION ID
  * @param anchor string with anchor name
  */
@@ -1601,7 +1614,7 @@ function openReqRevisionWindow(item_id, anchor)
 
 /**
  * Open print preview in popup window to enable simple printing for the user.
- * 
+ *
  * @author asimon
  * @param type can be "req","reqSpec", "tc"
  * @param id
@@ -1622,12 +1635,12 @@ function openPrintPreview(type, id, child_id, revision, print_action) {
   if (height == null) {
     height = "600";
   }
-  
+
   switch(type) {
 
     case 'req':
       if( feature_url.indexOf('?') > 0 ) {
-        feature_url += "&";  
+        feature_url += "&";
       } else {
         feature_url += "?";
       }
@@ -1636,13 +1649,13 @@ function openPrintPreview(type, id, child_id, revision, print_action) {
 
     case 'reqSpec':
       if( feature_url.indexOf('?') > 0 ) {
-        feature_url += "&";  
+        feature_url += "&";
       } else {
         feature_url += "?";
       }
       feature_url += "reqspec_id=" + id + "&reqspec_revision_id=" + child_id;
     break;
-    
+
     case 'tc':
       feature_url += "&testcase_id=" + id + "&tcversion_id=" + child_id;
     break;
@@ -1668,8 +1681,8 @@ function openExecHistoryWindow(tc_id,tplan_check,tproject_id) {
   url = url + "&tproject_id=" + tproject_id
   if(tplan_check != undefined)
   {
-    url = url + '&onlyActiveTestPlans=' + tplan_check;    
-  }  
+    url = url + '&onlyActiveTestPlans=' + tplan_check;
+  }
 
 
   if (width == null)
@@ -1681,14 +1694,14 @@ function openExecHistoryWindow(tc_id,tplan_check,tproject_id) {
   {
     height = "600";
   }
-  
+
   var windowCfg = "width="+width+",height="+height+",resizable=yes,scrollbars=yes,dependent=yes";
   window.open(fRoot+url, '_blank', windowCfg);
 }
 
 /**
  * open a requirement in a popup window
- * 
+ *
  * @param item_id Req Spec Revision ID
  * @param anchor string with anchor name
  */
@@ -1702,8 +1715,8 @@ function openReqSpecRevisionWindow(item_id, anchor)
 
   if (anchor == null) {
     anchor = '';
-  } 
-  else 
+  }
+  else
   {
     anchor = '#' + anchor;
   }
@@ -1744,13 +1757,13 @@ function openItemWindow(cfg)
 /*
   function: openTCW
         another open Test Case Window function
-        Intended to be used for adding reference to a Test Case 
+        Intended to be used for adding reference to a Test Case
         inside other Test Case for some sort of reuse
 
   args: tcase_external_id: example TER-23
       version_number: example 2
 
-  returns: - 
+  returns: -
 
 */
 function openTCW(tcase_external_id,version_number)
@@ -1784,17 +1797,17 @@ function openTCW(tcase_external_id,version_number)
  */
 function toogleShowHide(oid,display_type) {
   var obj = document.getElementById(oid);
-  
+
   if (!obj) {
     return;
-  }                  
-  
+  }
+
   if(obj.style.display == 'none') {
     if(display_type != undefined) {
       obj.style.display = display_type;
     } else {
       obj.style.display = '';
-    } 
+    }
   } else {
     obj.style.display = 'none';
   }
@@ -1805,17 +1818,17 @@ function toogleShowHide(oid,display_type) {
  */
 function toggleShowHide(oid,display_type) {
   var obj = document.getElementById(oid);
-  
+
   if (!obj) {
     return;
-  }                  
-  
+  }
+
   if(obj.style.display == 'none') {
     if(display_type != undefined) {
       obj.style.display = display_type;
     } else {
       obj.style.display = '';
-    } 
+    }
   } else {
     obj.style.display = 'none';
   }
@@ -1840,11 +1853,11 @@ function toogleImageURL(img_container_oid,file_id)
   if(ox.innerHTML != '')
   {
     return '';
-  } 
+  }
   else
   {
     return '<img src="lib/attachments/attachmentdownload.php?id=' + file_id + '"/>';
-  } 
+  }
 }
 
 
@@ -1857,7 +1870,7 @@ function clearTextAreaByClassName(cssClassName)
   for (var idx= 0;idx < ol.length;idx++)
   {
     ol[idx].value = '';
-  }   
+  }
 }
 
 /**
@@ -1869,7 +1882,7 @@ function clearSelectByClassName(cssClassName)
   for (var idx= 0;idx < ol.length;idx++)
   {
     ol[idx].value = '';
-  }   
+  }
 }
 
 
@@ -1882,7 +1895,7 @@ function validateStepsReorder(cssClassName)
   var ol = document.getElementsByClassName(cssClassName);
   var status = true;
   var dummy;
-  
+
   for (var idx= 0;idx < ol.length;idx++)
   {
     dummy = ol[idx].value;
@@ -1891,20 +1904,20 @@ function validateStepsReorder(cssClassName)
     {
       alert('Empty step number - KO');
       return false;
-    }  
+    }
 
     if(isNaN(dummy))
     {
       alert('Only numbers allowed - KO');
       return false;
-    }  
+    }
 
     if( dummy <= 0)
     {
       alert('Only numbers > 0, please - KO');
       return false;
-    }  
-  }   
+    }
+  }
 
   // check that all steps numbers are different
   dummy = [];
@@ -1913,12 +1926,12 @@ function validateStepsReorder(cssClassName)
     if( dummy.indexOf(ol[idx].value) < 0 )
     {
       dummy.push(ol[idx].value);
-    }  
+    }
     else
     {
       alert('Step numbers must be unique');
       return false;
-    }  
+    }
   }
   return status;
 }
@@ -1933,7 +1946,7 @@ function toogleRequiredOnShowHide(oid,display_type)
   var obj = document.getElementById(oid);
   if (!obj) {
     return;
-  }                  
+  }
 
   if(obj.style.display == 'none') {
     if(display_type != undefined) {
@@ -1942,10 +1955,10 @@ function toogleRequiredOnShowHide(oid,display_type)
       // SHOW, then field has to be Required
       obj.style.display = '';
       obj.setAttribute('required','required');
-    } 
+    }
   } else {
     obj.style.display = 'none';
-    obj.removeAttribute('required'); 
+    obj.removeAttribute('required');
   }
 }
 
@@ -1956,20 +1969,20 @@ function toogleRequiredOnShowHide(oid,display_type)
  */
 function openTSEditWindow(tsuite_id)  {
 
-  var url = "lib/testcases/archiveData.php?edit=testsuite&id=" + tsuite_id 
+  var url = "lib/testcases/archiveData.php?edit=testsuite&id=" + tsuite_id
   var width = getCookie("TSEditPopupWidth");
   var height = getCookie("TSEditPopupHeight");
-  
+
   if (width == null)
   {
     var width = "800";
   }
-  
+
   if (height == null)
   {
     var height = "600";
   }
-  
+
   var windowCfg = "width="+width+",height="+height+",resizable=yes,scrollbars=yes,dependent=yes";
   window.open(fRoot+url, '_blank', windowCfg);
 }
@@ -1978,7 +1991,7 @@ function openTSEditWindow(tsuite_id)  {
  *
  */
 function openKWMgmtWindow(page) {
- 
+
   var width = getCookie("KWMgmtPopupWidth");
   var height = getCookie("KWMgmtPopupHeight");
 
@@ -2001,8 +2014,8 @@ alert(page);
 }
 
 /**
- * 
- * @param {*} id 
+ *
+ * @param {*} id
  */
 function copyInputTextToClipboard(id) {
   var copyText = document.getElementById(id);

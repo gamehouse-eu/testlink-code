@@ -130,11 +130,11 @@ form
 
 /* 20100225 - eloff - BUGID 3217 - Ext removes bullets from all lists, re-add bullets to our lists */
 .workBack ol {
-    margin: 1em 40px;
+    /*margin: 1em 40px;*/
     list-style-type: decimal;
 }
-.workBack ul {
-    margin: 1em 40px;
+.workBack ul li{
+    /*margin: 1em 40px;*/
     list-style-type: disc;
     list-style-position: outside;
 }
@@ -166,7 +166,6 @@ div.menu_bar {
 	border-width:	thin;
 	padding: 		1px 5px;
 	margin:			0px 3px;
-	
 }
 
 select.menu_combo {
@@ -497,7 +496,7 @@ table.common {
 	min-width:		50%;
 }
 
-table.common th, table.simple th, table.simple_tableruler th{
+table.common th, table.simple th, table.simple_tableruler th, div.simple{
   	overflow:		hidden;
   	color:			#15428b;
   	font:			bold 11px tahoma,arial,verdana,sans-serif;
@@ -508,18 +507,25 @@ table.common th, table.simple th, table.simple_tableruler th{
   	background-color: #CDDEF3;
 }
 
+table.simple hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top: 1px solid #b5b8c8;
+}
+
 table.common td,th{
 	padding:		3px;
 }
 
 table.common td, table.simple td, table.simple_tableruler td, th{
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 /* Margin fix for paragraphs in steps table */
-table.common td p:first-child, table.simple td p:first-child,
-simple_tableruler td p:first-child{
+table.common td p:first-child, table.simple td p:last-child,
+simple_tableruler td p:last-child{
 	margin-top: 0;
+	margin-bottom: 0;
 }
 
 table.common caption, table.smallGrey caption {

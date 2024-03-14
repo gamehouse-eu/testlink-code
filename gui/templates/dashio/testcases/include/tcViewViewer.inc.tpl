@@ -8,16 +8,16 @@ viewer for test case in test specification
 {lang_get s='delete' var="del_msgbox_title"}
 
 {* will be useful in future to semplify changes *}
-{$tableColspan=$gui->tableColspan} 
+{$tableColspan=$gui->tableColspan}
 {$addInfoDivStyle='style="padding: 5px 3px 4px 10px;"'}
 
 
 {$module='lib/testcases/'}
 {$tcase_id=$args_testcase.testcase_id}
 {$tcversion_id=$args_testcase.id}
-{$showMode=$gui->show_mode} 
-{$tplan_id=$gui->tplan_id} 
-{$tproject_id=$gui->tproject_id} 
+{$showMode=$gui->show_mode}
+{$tplan_id=$gui->tplan_id}
+{$tproject_id=$gui->tproject_id}
 
 
 {$openC = $gsmarty_gui->role_separator_open}
@@ -27,7 +27,7 @@ viewer for test case in test specification
 
 {* Used on several operations to implement goback *}
 {$tcViewAction="lib/testcases/archiveData.php?tcase_id=$tcase_id&show_mode=$showMode&tproject_id=$tproject_id&tplan_id=$tplan_id"}
-             
+
 {$hrefReqSpecMgmt="lib/general/frmWorkArea.php?feature=reqSpecMgmt"}
 {$hrefReqSpecMgmt="$basehref$hrefReqSpecMgmt"}
 
@@ -77,7 +77,7 @@ viewer for test case in test specification
   {/if}
 	<h2>{$tcView_viewer_labels.title_test_case} {$args_testcase.name|escape} </h2>
 {/if}
-  
+
 {$warning_edit_msg=""}
 {$warning_delete_msg=""}
 {$edit_enabled=0}
@@ -88,7 +88,7 @@ viewer for test case in test specification
 
 {$has_been_executed=0}
 {if $args_status_quo != null || $args_status_quo[$args_testcase.id].executed}
-  {$has_been_executed=1}  
+  {$has_been_executed=1}
 {/if}
 
 {if $args_can_do->edit == "yes"}
@@ -97,45 +97,45 @@ viewer for test case in test specification
         {$delete_enabled=1}
         {$warning_edit_msg=""}
         {$warning_delete_msg=""}
-    {else} 
+    {else}
       {if isset($args_tcase_cfg) && $args_tcase_cfg->can_edit_executed == 1}
-        {$edit_enabled=1} 
+        {$edit_enabled=1}
         {lang_get s='warning_editing_executed_tc' var="warning_edit_msg"}
-      {/if} 
-      
+      {/if}
+
       {if isset($args_tcase_cfg)}
         {if $args_tcase_cfg->can_delete_executed == 1}
-          {$delete_enabled=1} 
+          {$delete_enabled=1}
           {$warning_delete_msg=""}
         {else}
-          {if ($args_can_do->delete_testcase == "yes" &&  
+          {if ($args_can_do->delete_testcase == "yes" &&
               $args_can_delete_testcase == "yes") ||
-              ($args_can_do->delete_version == "yes" && 
+              ($args_can_do->delete_version == "yes" &&
               $args_can_delete_version == "yes")}
             {lang_get s='system_blocks_delete_executed_tc' var="warning_delete_msg"}
-          {/if}  
-        {/if}  
-      {/if} 
+          {/if}
+        {/if}
+      {/if}
     {/if}
 
     {if $args_read_only == "yes"}
-      {$edit_enabled=0} 
-      {$delete_enabled=0} 
+      {$edit_enabled=0}
+      {$delete_enabled=0}
     {/if}
 
     {if 'editOnExec' != $gui->show_mode && $args_hide_relations == "yes"}
     	{$show_relations=0}
     {/if}
 
-    <div style="display:{$tlCfg->gui->op_area_display->test_case};" 
+    <div style="display: {$tlCfg->gui->op_area_display->test_case}; margin-top: 4px;"
          id="tcView_viewer_tcase_control_panel_{$tcversion_id}">
 
     {$allOpOnTCV = false}
-    {if 'editOnExec' != $gui->show_mode && 
-        isset($args_tcase_operations_enabled) && 
+    {if 'editOnExec' != $gui->show_mode &&
+        isset($args_tcase_operations_enabled) &&
         $args_tcase_operations_enabled == "yes"}
       {$allOpOnTCV = true}
-    {/if} 
+    {/if}
 
     {if $allOpOnTCV}
       <fieldset class="groupBtn">
@@ -165,7 +165,7 @@ viewer for test case in test specification
               <i class="fas fa-copy" title="{$tcView_viewer_labels.btn_mv_cp}"></i>
             </button>
       		{/if}
-      	  
+
       		{* Delete TC *}
       		{if $delete_enabled && $args_can_do->delete_testcase == "yes" && $args_can_delete_testcase == "yes"}
             <button style="border:0;" type="submit" name="delete_tc" id="delete_tc" value="{$tcView_viewer_labels.btn_delete}">
@@ -173,20 +173,20 @@ viewer for test case in test specification
             </button>
       		{/if}
         </form> <!-- id="topControls" -->
-      
+
       	{* bulk action *}
       	{if $edit_enabled && $args_bulk_action=="yes"}
       	  <form style="display: inline;" id="tcbulkact" name="tcbulkact" method="post" action="{$bulkOpAction}" >
             <input type="hidden" name="tcase_id" id="tcase_id" value="{$args_testcase.testcase_id}" />
             <input type="hidden" name="tproject_id" value="{$gui->tproject_id}" />
             <input type="hidden" name="tplan_id" value="{$gui->tplan_id}" />
-    
+
             <button style="border:0;" type="submit" name="bulk_op" value="{$tcView_viewer_labels.btn_bulk}">
               <i class="fa-solid fa-envelopes-bulk" title="{$tcView_viewer_labels.btn_bulk}"></i>
             </button>
       	  </form>
       	{/if}
-      	
+
       	{* compare versions *}
       	<span>
       	  {if $args_testcase.version > 1}
@@ -204,7 +204,7 @@ viewer for test case in test specification
 
         {* execution history *}
       	<span>
-           <i class="fa-solid fa-list-check" title="{$tcView_viewer_labels.btn_show_exec_history}" 
+           <i class="fa-solid fa-list-check" title="{$tcView_viewer_labels.btn_show_exec_history}"
               onclick="javascript:openExecHistoryWindow({$args_testcase.testcase_id},1);"></i>
         </span>
       </fieldset>
@@ -226,15 +226,15 @@ viewer for test case in test specification
 
       	{* Edit TC *}
       	{if $edit_enabled && $args_frozen_version=="no"}
-          <button style="border:0;" name="edit_tc" 
+          <button style="border:0;" name="edit_tc"
             onclick="doAction.value='edit';{$gui->submitCode}" value="{$tcView_viewer_labels.btn_edit}">
-            <i class="fas fa-pencil-alt" 
+            <i class="fas fa-pencil-alt"
                title="{$tcView_viewer_labels.btn_edit}"></i>
           </button>
       	{/if}
 
-        {if ( isset($args_tcversion_operation_only_edit_button) && 
-              $args_tcversion_operation_only_edit_button == "no") || 
+        {if ( isset($args_tcversion_operation_only_edit_button) &&
+              $args_tcversion_operation_only_edit_button == "no") ||
               ($args_can_do->delete_frozen_tcversion == "yes") }
 
           {* new TC version *}
@@ -267,7 +267,7 @@ viewer for test case in test specification
                 {$icon="fa-solid fa-ice-cream"}
         		  {/if}
 
-             <button type="submit" style="border:0;" 
+             <button type="submit" style="border:0;"
                 onclick="doAction.value='{$freeze_btn}';{$gui->submitCode}">
                <i class="{$icon}" style="padding:1px 6px;" title="{lang_get s=$freeze_value}"></i>
              </button>
@@ -282,11 +282,11 @@ viewer for test case in test specification
           {$args_can_do->delete_version}<br>
           {$args_can_delete_version}<br>
           *}
-          
-        	{if ( $args_frozen_version=="no" || $args_can_do->delete_frozen_tcversion == "yes") && 
+
+        	{if ( $args_frozen_version=="no" || $args_can_do->delete_frozen_tcversion == "yes") &&
                $args_can_do->delete_version == "yes" && $args_can_delete_version == "yes"}
 
-            <button type="submit" style="border:0;" name="delete_tc_version" id="delete_tc_version" 
+            <button type="submit" style="border:0;" name="delete_tc_version" id="delete_tc_version"
                     value="{$tcView_viewer_labels.btn_del_this_version}" >
               <i class="fas fa-times-circle" title="{$tcView_viewer_labels.btn_del_this_version}"></i>
             </button>
@@ -295,10 +295,10 @@ viewer for test case in test specification
         {/if}
       </form>
 
-      {if 'editOnExec' != $gui->show_mode && 
+      {if 'editOnExec' != $gui->show_mode &&
         isset($args_tcversion_operation_only_edit_button) &&
         $args_tcversion_operation_only_edit_button == "no"}
-        
+
         {* add TC version to testplan *}
         {if $args_can_do->add2tplan == "yes" && $args_has_testplans}
         	<span>
@@ -336,8 +336,8 @@ viewer for test case in test specification
             </button>
           </form>
 
-          {if 1 == $gui->candidateToUpd && '' != $gui->tplan_id && 
-             'editOnExec' == $gui->show_mode && 'yes' == $args_can_do->updTplanTCV } 
+          {if 1 == $gui->candidateToUpd && '' != $gui->tplan_id &&
+             'editOnExec' == $gui->show_mode && 'yes' == $args_can_do->updTplanTCV }
             <form style="display: inline;" id="updTPlan" name="updTPlan" method="post" action="{$basehref}lib/testcases/tcEdit.php">
                 <input type="hidden" name="testcase_id" id="updTPlan_testcase_id" value="{$args_testcase.testcase_id}" />
                 <input type="hidden" name="tcversion_id" value="{$args_testcase.id}" />
@@ -345,9 +345,9 @@ viewer for test case in test specification
                 <input type="hidden" name="tproject_id" value="{$gui->tproject_id}" />
 
                 <input type="hidden" id="updTPlan_show_mode" name="show_mode" value="{$gui->show_mode}" />
-                
+
                 <input type="hidden" name="doAction" value="updateTPlanLinkToTCV">
-                <input class="{#BUTTON_CLASS#}" type="submit" id="updTPlan" name="updTPlan" 
+                <input class="{#BUTTON_CLASS#}" type="submit" id="updTPlan" name="updTPlan"
                   style="background:#B22222;color:white;"
                   value="{$tcView_viewer_labels.updateLinkToThisTCVersion}">
             </form>
@@ -366,7 +366,7 @@ viewer for test case in test specification
   {if $args_testcase.active eq 0}
     <div class="messages" align="center">{$tcView_viewer_labels.tcversion_is_inactive_msg}</div>
   {/if}
-  
+
   {* warning message when tc version is frozen *}
   {if $args_frozen_version=="yes"}
     <div class="messages" align="center">{$tcView_viewer_labels.can_not_edit_frozen_tc}</div>
@@ -382,7 +382,7 @@ viewer for test case in test specification
          {$warning_delete_msg|escape}<br>
        </div>
    {/if}
-   
+
 
 <script type="text/javascript">
   /**
@@ -408,7 +408,7 @@ viewer for test case in test specification
   }
 </script>
 
-<form id="stepsControls" name="stepsControls" 
+<form id="stepsControls" name="stepsControls"
   method="post" action="{$basehref}lib/testcases/tcEdit.php">
   <input type="hidden" name="goback_url" value="{$goBackAction}" />
   <input type="hidden" id="stepsControls_doAction" name="doAction" value="" />
@@ -421,7 +421,7 @@ viewer for test case in test specification
   <input type="hidden" id="stepsControls_show_mode" name="show_mode" value="{$gui->show_mode}" />
   <input type="hidden" id="stepsControls_tplan_id" name="tplan_id" value="{$gui->tplan_id}" />
 
-    {include file="{$tplConfig['tcbody.inc']}" 
+    {include file="{$tplConfig['tcbody.inc']}"
              inc_tcbody_close_table=false
              inc_tcbody_testcase=$args_testcase
              inc_tcbody_show_title=$args_show_title
@@ -431,7 +431,8 @@ viewer for test case in test specification
              inc_tcbody_updater_userinfo=$updater_userinfo
              inc_tcbody_editor_type=$gui->designEditorType
              inc_tcbody_cf=$args_cf}
-    
+
+<table class="simple">
   {if $args_testcase.steps != ''}
     {include file="{$tplConfig['steps.inc']}"
              layout=$gui->steps_results_layout
@@ -444,20 +445,20 @@ viewer for test case in test specification
 
 {if $edit_enabled && $args_frozen_version=="no"}
 <div {$addInfoDivStyle}>
-  <input class="{#BUTTON_CLASS#}" type="submit" 
+  <input class="{#BUTTON_CLASS#}" type="submit"
          name="create_step" id="create_step"
          onclick="doAction.value='createStep';{$gui->submitCode}"
          value="{$tcView_viewer_labels.btn_create_step}" />
 
   {if $args_testcase.steps != ''}
-    <input class="{#BUTTON_CLASS#}" type="submit" 
-           name="resequence_steps" id="resequence_steps" 
-           onclick="doAction.value='doResequenceSteps';{$gui->submitCode}" 
+    <input class="{#BUTTON_CLASS#}" type="submit"
+           name="resequence_steps" id="resequence_steps"
+           onclick="doAction.value='doResequenceSteps';{$gui->submitCode}"
            value="{$tcView_viewer_labels.btn_resequence_steps}" />
   {/if}
 
   <span class="order_info" style='display:none'>
-  <input class="{#BUTTON_CLASS#}" type="submit" 
+  <input class="{#BUTTON_CLASS#}" type="submit"
          name="renumber_step" id="renumber_step"
           onclick="doAction.value='doReorderSteps';{$gui->submitCode};javascript: return validateStepsReorder('step_number{$args_testcase.id}');"
           value="{$tcView_viewer_labels.btn_reorder_steps}" />
@@ -466,7 +467,7 @@ viewer for test case in test specification
 {/if}
 </form>
 
-{include file="{$tplConfig['attributesLinearForViewer.inc']}"} 
+{include file="{$tplConfig['attributesLinearForViewer.inc']}"}
 
 {if $args_cf != null && $args_cf.standard_location neq ''}
   <div {$addInfoDivStyle}>
@@ -479,70 +480,70 @@ viewer for test case in test specification
   <div {$addInfoDivStyle}>
    {$platRW = 0}
    {$kwRW = $args_frozen_version=="no" && $edit_enabled == 1 &&
-            $has_been_executed == 0} 
-   
+            $has_been_executed == 0}
+
    {if $args_frozen_version=="no" && $has_been_executed == 1 }
-     {if $args_tcase_cfg->can_edit_executed == 1 || 
+     {if $args_tcase_cfg->can_edit_executed == 1 ||
          $args_tcase_cfg->can_add_remove_kw_on_executed == 1}
        {$kwRW = 1}
      {/if}
    {/if}
-   
-   {include file="{$tplConfig['keywords.inc']}" 
+
+   {include file="{$tplConfig['keywords.inc']}"
             args_edit_enabled=$kwRW
             args_tcase_id=$tcase_id
             args_tcversion_id=$tcversion_id
-   } 
+   }
 </div>
 
 {if $gui->hasIssueTracker}
   <div {$addInfoDivStyle}>
-     {$alienRW = $args_frozen_version=="no" 
-                 && $edit_enabled == 1 
-                 && $has_been_executed == 0} 
-     
+     {$alienRW = $args_frozen_version=="no"
+                 && $edit_enabled == 1
+                 && $has_been_executed == 0}
+
      {if $args_frozen_version=="no" && $has_been_executed == 1 }
-       {if $args_tcase_cfg->can_edit_executed == 1 || 
+       {if $args_tcase_cfg->can_edit_executed == 1 ||
            $args_tcase_cfg->can_add_remove_kw_on_executed == 1}
          {$alienRW = 1}
        {/if}
      {/if}
-     
-     {include file="{$tplConfig['aliens.inc']}" 
+
+     {include file="{$tplConfig['aliens.inc']}"
               args_edit_enabled=$alienRW
               args_tcase_id=$tcase_id
-              args_tcversion_id=$tcversion_id} 
+              args_tcversion_id=$tcversion_id}
   </div>
 {/if}
-  
+
 <p>
 <div {$addInfoDivStyle}>
    {$kwRW = $args_frozen_version=="no" && $edit_enabled == 1 &&
-            $has_been_executed == 0} 
-   
+            $has_been_executed == 0}
+
    {if $args_frozen_version=="no" && $has_been_executed == 1 }
      {if $args_tcase_cfg->can_edit_executed == 1}
        {$platRW = 1}
      {/if}
    {/if}
-   
-   {include file="{$tplConfig['platforms.inc']}" 
+
+   {include file="{$tplConfig['platforms.inc']}"
             args_edit_enabled=$platRW
             args_tcase_id=$tcase_id
             args_tcversion_id=$tcversion_id
-   } 
+   }
 </div>
 
 
-{if $gui->requirementsEnabled == TRUE && 
+{if $gui->requirementsEnabled == TRUE &&
   ($gui->view_req_rights == "yes" || $gui->req_tcase_link_management) }
   {$reqLinkingEnabled = 0}
   {if $gui->req_tcase_link_management && $args_frozen_version=="no" &&
          $edit_enabled == 1 }
          {$reqLinkingEnabled = 1}
-  {/if}    
+  {/if}
 
-  {if $tlCfg->testcase_cfg->reqLinkingDisabledAfterExec == 1 && 
+  {if $tlCfg->testcase_cfg->reqLinkingDisabledAfterExec == 1 &&
        $has_been_executed == 1 && $args_tcase_cfg->can_edit_executed == 0}
        {$reqLinkingEnabled = 0}
   {/if}
@@ -564,8 +565,7 @@ viewer for test case in test specification
                 {$reqID=$args_reqs[item].id}
                 {$reqVersionID=$args_reqs[item].req_version_id}
                 {$reqVersionNum=$args_reqs[item].version}
-                
-                
+
                 <img class="clickable" src="{$tlImages.edit}"
                      onclick="javascript:openLinkedReqVersionWindow({$reqID},{$reqVersionID},{$gui->tproject_id});"
                      title="{$tcView_viewer_labels.requirement}" />
@@ -609,22 +609,22 @@ viewer for test case in test specification
     </table>
   </div>
 {/if}
-  
+
 {if $show_relations}
   <br />
   {include file="{$tplConfig['relations.inc']}"
            args_is_latest_tcv = $args_testcase.isTheLatest
            args_relations = $args_relations
            args_frozen_version = $args_frozen_version
-           args_edit_enabled = $edit_enabled} 
+           args_edit_enabled = $edit_enabled}
 {/if}
 
-{if 'editOnExec' != $gui->show_mode && 
+{if 'editOnExec' != $gui->show_mode &&
   $args_linked_versions != null && $tlCfg->spec_cfg->show_tplan_usage}
   {* Test Case version Test Plan Assignment *}
   <br />
   {include file="{$tplConfig['quickexec.inc']}"
-           args_edit_enabled=$edit_enabled} 
+           args_edit_enabled=$edit_enabled}
 {/if}
 
 {if $gui->closeMyWindow }

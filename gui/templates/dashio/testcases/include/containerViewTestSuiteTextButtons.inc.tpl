@@ -1,20 +1,16 @@
   {$calledByOK = property_exists($gui,'calledByMethod')}
   {$tprojIDOK = property_exists($gui,'tproject_id')}
-  {$tlIMGTags.toggle_direct_link} &nbsp;
-  <i class="fa fa-cog" aria-hidden="true"
+  {$tlIMGTags.toggle_direct_link}
+  <span class="direct_link" style='display:none'>
+    <a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a>
+  </span>
+  <i class="fa fa-cog clickable" aria-hidden="true"
      onclick="javascript:toogleShowHide('tsuite_control_panel');"
      title="{$labels.actions}">
   </i>
 
-  <div class="direct_link" style='display:none'>
-    <fieldset class="groupBtn">
-      <a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a>
-    </fieldset>
-    <div>&nbsp;</div>
-  </div>
-
   <div id="tsuite_control_panel"
-      style="display:{$tlCfg->gui->op_area_display->test_spec_container};">
+      style="display: {$tlCfg->gui->op_area_display->test_spec_container}; margin-top: 4px;">
       <fieldset class="groupBtn">
         <b>{$labels.testsuite_operations}</b>
         <form method="post" action="{$basehref}lib/testcases/containerEdit.php">
@@ -158,5 +154,4 @@
              title="{$labels.btn_create_from_issue_xml}"></i>
         </form>
       </fieldset>
-      <div>&nbsp;</div>
   </div>

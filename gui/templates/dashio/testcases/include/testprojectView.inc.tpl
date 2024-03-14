@@ -5,11 +5,11 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 {if $gui->modify_tc_rights == 'yes'}
     {$bDownloadOnly=false}
-    <i class="fa fa-cog" aria-hidden="true"
+    <i class="fa fa-cog clickable" aria-hidden="true"
       onclick="javascript:toogleShowHide('tproject_control_panel');"
       title="{$labels.actions}">
     </i>
-    <div id="tproject_control_panel" style="display:{$tlCfg->gui->op_area_display->test_spec_container};">
+    <div id="tproject_control_panel" style="display: {$tlCfg->gui->op_area_display->test_spec_container}; margin-top: 4px;">
       <fieldset class="groupBtn">
       <b>{$labels.testsuite_operations}</b>
       <form method="post" action="{$basehref}lib/testcases/containerEdit.php">
